@@ -2,31 +2,30 @@
 
 using namespace std;
 
-int main()
-{
-	int n, x[30], id;
+int main() {
+	int x[30], id, n;
 	cin >> n;
 
-	if (n > 0) {
-		for (int i = 0; i < n; i++) x[i] = 0;
+	// Xây dựng cấu hình đầu tiên
+	for (int i = 0; i < n; i++) x[i] = 0;
 
-		do {
-			for (int i = 0; i < n; i++) cout << x[i];
-			cout << "\n";
+	// Xây dựng các cấu hình còn lại
+	do {
+		// In cấu hình hiện tại 
+		for (int i = 0; i < n; i++) cout << x[i];
+		cout << endl;
 
-			id = n - 1;
+		// Gán id bằng vị trí cuối cùng của dãy
+		id = n - 1;
+		// Lùi dần i về cho đến khi gặp phần tử thứ id bằng 0 hoặc id nhỏ hơn 0
+		while (id >= 0 && x[id] == 1) id--;
+		
+		//Gán tất cả phần tử thứ id + 1 -> n bằng 0
+		if (id >= 0) {
+			x[id] = 1;
+			for (int i = id + 1; i < n; i++) x[i] = 0;
+		}
+	} while (id >= 0);
 
-			while (id >= 0 && x[id] == 1) id--;
-
-			if (id >= 0) {
-				x[id] = 1;
-				for (int i = id + 1; i < n; i++) x[i] = 0;
-			}
-		} while (id >= 0);
-	}
-	else
-	{
-		cout << "Binary strings of 0 bits or less do not exist";
-	}
 	return 0;
 }
