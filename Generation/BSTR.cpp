@@ -20,7 +20,7 @@ int main() {
 		// Lùi dần i về cho đến khi gặp phần tử thứ id bằng 0 hoặc id nhỏ hơn 0
 		while (id >= 0 && x[id] == 1) id--;
 		
-		//Gán tất cả phần tử thứ id + 1 -> n bằng 0
+		//Xây dựng cấu hình kế tiếơ
 		if (id >= 0) {
 			x[id] = 1;
 			for (int i = id + 1; i < n; i++) x[i] = 0;
