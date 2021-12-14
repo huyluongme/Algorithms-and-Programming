@@ -3,37 +3,39 @@
 
 using namespace std;
 
-int main()
-{
-	int n, x[12], id_i, id_k;
+int main() {
+	int n, x[30], id_i, id_k;
 	cin >> n;
-	if (n == 0)
-		cout << 0;
-	else if (n > 0) {
-		for (int i = 0; i < n; i++) x[i] = i + 1;
 
-		do {
-			for (int i = 0; i < n; i++) cout << x[i] << " ";
-			cout << "\n";
+	// Xây dựng cấu hình đầu tiên
+	for (int i = 1; i <= n; i++) x[i - 1] = i;
 
-			id_i = n - 2; id_k = n - 1;
-			while (id_i >= 0 && x[id_i] > x[id_i + 1]) id_i--;
+	do {
+		// In ra cấu hình hiện tại
+		for (int i = 0; i < n; i++) cout << x[i] << " ";
+		cout << endl;
 
-			if (id_i >= 0) {
-				while (x[id_k] < x[id_i]) id_k--;
+		// Tìm vị trí phần tử không thỏa mãn dãy giảm dần từ cuối lên đầu
+		id_i = n - 2;
+		while (id_i >= 0 && x[id_i] > x[id_i + 1]) id_i--;
 
-				swap(x[id_i], x[id_k]);
+		if (id_i >= 0) {
 
-				int a = id_i + 1, b = n - 1;
+			// Tìm vị trí phần tử có giá trị nhỏ nhất trong dãy giảm dần thỏa điều kiện lớn hơn giá trị tại id_i
+			id_k = n - 1;
+			while (x[id_k] < x[id_i]) id_k--;
 
-				while (a < b)
-				{
-					swap(x[a], x[b]);
-					a++;
-					b--;
-				}
+			swap(x[id_i], x[id_k]);
+
+			// Sắp xếp lại dãy giảm dần thành dãy tăng dần
+			int a = id_i + 1, b = n - 1;
+			while (a < b) {
+				swap(x[a], x[b]);
+				a++;
+				b--;
 			}
-		} while (id_i >= 0);
-	}
+		}
+	} while (id_i >= 0);
+
 	return 0;
 }
