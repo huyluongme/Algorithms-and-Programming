@@ -1,3 +1,6 @@
+/*
+	Người ta có thể dùng phương pháp sinh để liệt kê các chỉnh hợp không lặp chập k. Tuy nhiên có một cách khác là liệt kê tất cả các tập hợp con k phần tử của tập hợp, sau đó in ra đủ k! hoán vị của nó. Hãy viết chương trình liệt kê các chỉnh hợp không lặp chập k của {1, 2, ...,n} theo cả hai cách.
+*/
 #include <iostream>
 #include <algorithm>
 
